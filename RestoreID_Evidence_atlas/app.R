@@ -10,7 +10,7 @@ library(shinycssloaders)
 library(leaflet.extras)
 library(shinythemes)
 
-setwd("C:/Users/Adam/OneDrive - University of Stirling/RestoreID_Project_2024_2025/Excel_documents/R_Script_datafiles")
+setwd("data")
 
 scientific_lit_data <- read.csv("Evidence_map_centroids.csv")
 
@@ -20,11 +20,7 @@ nfr_df <- read.csv("NFR_xy.csv")
 
 piechart_df <- read.csv("Shinyapp_piechart_dataframe.csv", check.names = FALSE)
 
-setwd("C:/Users/Adam/OneDrive - University of Stirling/RestoreID_Project_2024_2025/World_Countries_shapefile/")
-
 country_shapes_geojson <- geojsonsf::geojson_sf("simplified_UN_region_shapes.geojson")
-
-setwd("C:/Users/Adam/OneDrive - University of Stirling/RestoreID_Project_2024_2025/R_Scripts/Full_scripts")
 
 #########################################################################################################################################################
 

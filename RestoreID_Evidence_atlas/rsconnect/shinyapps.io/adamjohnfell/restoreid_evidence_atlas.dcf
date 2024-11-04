@@ -1,0 +1,10 @@
+name: restoreid_evidence_atlas
+title:
+username: adamjohnfell
+account: adamjohnfell
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13222808
+bundleId: 9312779
+url: https://adamjohnfell.shinyapps.io/restoreid_evidence_atlas/
+version: 1
