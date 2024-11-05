@@ -1,4 +1,5 @@
 
+
 # Load necessary libraries
 library(shiny)
 library(leaflet)
@@ -64,6 +65,23 @@ ui <- fluidPage(
       max-width: 800px; /* Set a max width for the pie chart */
       width: 100%; /* Set to 100% to take full width up to max-width */
     }
+    .selectize-input, .select {
+        position: relative;
+      }
+      .selectize-input::after, .select::after {
+        content: '\\25BC';  /* Unicode for a downward arrow */
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #555;
+        pointer-events: none;
+      }
+      body {
+                transform: scale(0.93);
+                transform-origin: top middle;
+                margin-top: -20px; /* Move content closer to the top of the screen */
+            }
   "))),
   
   sidebarLayout(
@@ -75,13 +93,13 @@ ui <- fluidPage(
                  tags$br(),
                  textInput("search_title", "Search by Article Title:", ""),
                  textInput("search_author", "Search by Author:", ""),
-                 selectizeInput("year_filter", "Select Year:", choices = unique(scientific_lit_data$Year.of.publication), selected = NULL, multiple = TRUE),
-                 selectizeInput("scale_filter", "Select Scale of Study:", choices = unique(scientific_lit_data$Scale.of.study), selected = NULL, multiple = TRUE),
-                 selectizeInput("research_type_filter", "Select Research Type:", choices = unique(scientific_lit_data$Research.type), selected = NULL, multiple = TRUE),
-                 selectizeInput("focus_filter", "Select Primary Focus:", choices = unique(scientific_lit_data$Primary.focus.areas), selected = NULL, multiple = TRUE),
-                 selectizeInput("disease_filter", "Select General Disease:", choices = unique(scientific_lit_data$General.disease), selected = NULL, multiple = TRUE),
-                 selectizeInput("vector_filter", "Select General Vector:", choices = unique(scientific_lit_data$General.vector), selected = NULL, multiple = TRUE),
-                 selectizeInput("type_filter", "Select Type of Study:", choices = unique(scientific_lit_data$Type.of.study), selected = NULL, multiple = TRUE),
+                 selectizeInput("year_filter", "Select Year:", choices = sort(unique(scientific_lit_data$Year.of.publication)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select year")),
+                 selectizeInput("scale_filter", "Select Scale of Study:", choices = sort(unique(scientific_lit_data$Scale.of.study)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select scale")),
+                 selectizeInput("research_type_filter", "Select Research Type:", choices = sort(unique(scientific_lit_data$Research.type)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select research type")),
+                 selectizeInput("focus_filter", "Select Primary Focus:", choices = sort(unique(scientific_lit_data$Primary.focus.areas)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select primary focus")),
+                 selectizeInput("disease_filter", "Select General Disease:", choices = sort(unique(scientific_lit_data$General.disease)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select disease")),
+                 selectizeInput("vector_filter", "Select General Vector:", choices = sort(unique(scientific_lit_data$General.vector)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select vector")),
+                 selectizeInput("type_filter", "Select Type of Study:", choices = sort(unique(scientific_lit_data$Type.of.study)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select study type")),
                  
                  actionButton("reset_button", "Reset Filters"),
                  br(),
