@@ -41,8 +41,8 @@ pathogen_order <- c("Virus", "Bacteria", "Protozoan", "Multiple pathogens", "Hel
 theme_order <- c("Field study", "Descriptive", "Review", "Experimental", "Hypothesis/theoretical")
 
 nfr_icon <- makeAwesomeIcon(
-  icon = "exclamation",         
-  iconColor = "black",   
+  icon = "exclamation-circle fa-2x",         
+  iconColor = "red",   
   markerColor = "white",  
   library = "fa" 
 )
