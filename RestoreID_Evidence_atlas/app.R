@@ -17,6 +17,8 @@ scientific_lit_data <- read.csv("Evidence_map_centroids.csv")
 
 case_reports_data <- read.csv("case_reports_evidence_map.csv")
 
+policy_briefs <- read.csv("policy_brief_restoreid.csv")
+
 nfr_df <- read.csv("NFR_xy.csv")
 
 piechart_df <- read.csv("Shinyapp_piechart_dataframe.csv", check.names = FALSE)
@@ -24,7 +26,6 @@ piechart_df <- read.csv("Shinyapp_piechart_dataframe.csv", check.names = FALSE)
 country_shapes_geojson <- geojsonsf::geojson_sf("simplified_UN_region_shapes.geojson")
 
 #########################################################################################################################################################
-
 # Create a named list for the color palette
 custom_colors <- list(
   "Central America" = "#FF9FBA", "Central Asia" = "#8E44AD", "Eastern Africa" = "#F1D27A", "Eastern Asia" = "#A24D8E", "Europe" = "#4A90E2", 
@@ -46,7 +47,6 @@ nfr_icon <- makeAwesomeIcon(
   markerColor = "white",  
   library = "fa" 
 )
-
 #########################################################################################################################################################
 
 ui <- fluidPage(
@@ -91,7 +91,7 @@ ui <- fluidPage(
       tabsetPanel(
         tabPanel("Search scientific literature", 
                  tags$br(),
-                 textInput("search_title", "Search by Article Title:", ""),
+                 textInput("search_title", "Search by Keywords in Article Title:", ""),
                  textInput("search_author", "Search by Author:", ""),
                  selectizeInput("year_filter", "Select Year:", choices = sort(unique(scientific_lit_data$Year.of.publication)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select year")),
                  selectizeInput("scale_filter", "Select Scale of Study:", choices = sort(unique(scientific_lit_data$Scale.of.study)), selected = NULL, multiple = TRUE, options = list(placeholder = "Select scale")),
@@ -253,9 +253,21 @@ server <- function(input, output, session) {
         "<a href='", case_reports_data$URL, "' target='_blank'>", case_reports_data$Title, "</a>",
         "</span><br><br>",
         "<b>Year:</b> ", case_reports_data$Year, "<br><br>",
+        "<b>Region:</b> ", case_reports_data$Country, "<br><br>",
         "<b>Theme:</b> ", case_reports_data$theme, "<br><br>",
         "<b>Results:</b> ", case_reports_data$Results, "<br><br>",
         "<b>Lessons learnt:</b> ", case_reports_data$Lessons.learnt, "<br><br>",
+        "</div>",
+        sep = ""
+      )
+      popup_content2 <- paste(
+        "<div style='font-size: 14px; padding: 10px; border: 1px solid #ccc;'>", 
+        "<span style='font-size: 20px; font-weight: bold;'>",
+        "<a href='", policy_briefs$URL, "' target='_blank'>", policy_briefs$Title, "</a>",
+        "</span><br><br>",
+        "<b>Year:</b> ", policy_briefs$Year, "<br><br>",
+        "<b>Region:</b> ", policy_briefs$Country, "<br><br>",
+        "<b>Theme:</b> ", policy_briefs$recommendations, "<br><br>",
         "</div>",
         sep = ""
       )
@@ -299,7 +311,7 @@ server <- function(input, output, session) {
         addCircleMarkers(
           lng = case_reports_data$Longitude, 
           lat = case_reports_data$Latitude, 
-          fillColor = "#C355F5", 
+          fillColor = "#FF5CAD", 
           radius = 6, 
           color = "black",
           weight = 2,
@@ -307,6 +319,20 @@ server <- function(input, output, session) {
           stroke = TRUE,
           popup = popup_content1,
           group = "Case Reports",
+          options = markerOptions(zIndex = 1000)
+        ) %>%
+        # Add policy briefs as a separate layer
+        addCircleMarkers(
+          lng = policy_briefs$Longitude, 
+          lat = policy_briefs$Latitude, 
+          fillColor = "#B84DFF", 
+          radius = 6, 
+          color = "black",
+          weight = 2,
+          fillOpacity = 0.9,
+          stroke = TRUE,
+          popup = popup_content2,
+          group = "Policy Briefs",
           options = markerOptions(zIndex = 1000)
         ) %>%
         # Add case reports markers as a separate layer
@@ -319,12 +345,13 @@ server <- function(input, output, session) {
         # Add layers control with regions layer toggled off
         addLayersControl(
           baseGroups = c("Street Map"),  
-          overlayGroups = c("Regions", "Studies", "Case Reports", "Need for research"),         
+          overlayGroups = c("Studies", "Case Reports", "Policy Briefs", "Need for research", "Regions"),         
           options = layersControlOptions(collapsed = FALSE)
         ) %>%
         hideGroup("Regions")  %>% 
         hideGroup("Case Reports") %>%
-        hideGroup("Need for research")
+        hideGroup("Need for research") %>%
+        hideGroup("Policy Briefs")
     }
   })
 }
