@@ -1,0 +1,15 @@
+Disease_transmission,Afforestation,Anthropization,Biodiversity_loss,Climate,Conservation,Deforestation,Dilution_effect,Fragmentation,Habitat_degradation,Landuse_alteration,Reforestation,Restoration_services,Species_removal,Urbanisation,Wetland_restoration,Wildfire
+Athropod_borne,,,,,,1,1,-2,,,,,,0,,
+Avian_borne,,,,,,,,,,,1,,,0,,
+Bat_borne,,,,0,,-3,,-3,,-1,,0,,-2,,
+General,,,,,,,,,,,1,,,,,
+Mosquito_borne,0,-3,-1,,1,-17,2,-5,,,1,,,-2,4,
+Multiple_VBD,,,,,,-1,,-1,,,,,,-1,,
+Multiple_Zoonoses,,,,,0,-2,0,,,0,-1,0,,,,
+Neglected_diseases,,,,,,-1,,,,,,,,,,
+Other_vector_borne,,,-1,,0,-2,2,0,,,,,,0,,
+Other_zoonoses,,,,,,-2,,,,-1,0,,,-1,,
+Rodent_borne,,,-1,,,-1,3,0,0,-1,2,,-1,-3,,-1
+Tick_borne,,-1,-1,,,-1,2,-2,,1,-1,,2,2,,
+Tuberculosis,,,,,,,,,,,1,,,,,
+Wildlife_diseases,,,,,,,,-2,,,,,,,,
