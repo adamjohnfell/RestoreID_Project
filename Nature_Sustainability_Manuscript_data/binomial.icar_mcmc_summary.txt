@@ -1,0 +1,78 @@
+
+Iterations = 1001:1996
+Thinning interval = 5 
+Number of chains = 2 
+Sample size per chain = 200 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                        Mean       SD Naive SE Time-series SE
+beta.(Intercept)    -3.10256  0.17687 0.008843        0.01972
+beta.deforestation   0.23479  0.12066 0.006033        0.01227
+beta.ppt             0.65541  0.17404 0.008702        0.01774
+beta.tmin           -0.91734  0.16544 0.008272        0.01762
+beta.pop            -0.56165  0.28050 0.014025        0.03239
+beta.alt            -0.09318  0.12129 0.006065        0.01101
+beta.mammal          0.88992  0.15352 0.007676        0.01558
+beta.cropland       -0.46670  0.19615 0.009808        0.01981
+beta.acc_city       -0.10038  0.10956 0.005478        0.01030
+beta.bushmeat        0.02753  0.12266 0.006133        0.01206
+beta.landuse        -0.46695  0.17701 0.008850        0.02171
+Vrho                 9.88979  0.04819 0.002410        0.01137
+Deviance           541.07738 25.80254 1.290127        3.99726
+
+2. Quantiles for each variable:
+
+                        2.5%       25%       50%        75%
+beta.(Intercept)    -3.45683  -3.21742  -3.10656  -2.984460
+beta.deforestation  -0.02282   0.15608   0.24564   0.321410
+beta.ppt             0.30909   0.53473   0.65804   0.765954
+beta.tmin           -1.25878  -1.02020  -0.92808  -0.799693
+beta.pop            -1.09575  -0.75277  -0.57290  -0.367696
+beta.alt            -0.33150  -0.18347  -0.08733  -0.005949
+beta.mammal          0.55153   0.79915   0.89654   0.993358
+beta.cropland       -0.82824  -0.60614  -0.45114  -0.330447
+beta.acc_city       -0.33389  -0.16468  -0.10862  -0.019584
+beta.bushmeat       -0.21085  -0.05188   0.01966   0.117463
+beta.landuse        -0.80206  -0.59474  -0.46269  -0.341964
+Vrho                 9.82021   9.85033   9.87793   9.922948
+Deviance           486.87400 524.61017 539.88002 558.335348
+                       97.5%
+beta.(Intercept)    -2.77539
+beta.deforestation   0.45033
+beta.ppt             1.00623
+beta.tmin           -0.61915
+beta.pop             0.04388
+beta.alt             0.13756
+beta.mammal          1.19917
+beta.cropland       -0.08934
+beta.acc_city        0.11512
+beta.bushmeat        0.28002
+beta.landuse        -0.12857
+Vrho                 9.98927
+Deviance           592.31150
+
+
+ 
+ 
+Potential scale reduction factors:
+
+                   Point est. Upper C.I.
+beta.(Intercept)         1.56       2.63
+beta.deforestation       1.04       1.15
+beta.ppt                 1.08       1.31
+beta.tmin                1.01       1.04
+beta.pop                 1.05       1.16
+beta.alt                 1.05       1.23
+beta.mammal              1.16       1.55
+beta.cropland            1.22       1.72
+beta.acc_city            1.00       1.01
+beta.bushmeat            1.08       1.33
+beta.landuse             1.02       1.09
+Vrho                     1.67       3.17
+Deviance                 1.08       1.20
+
+Multivariate psrf
+
+1.73
